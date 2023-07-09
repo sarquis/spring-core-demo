@@ -34,17 +34,13 @@ public class DemoController {
      * Setter Injection - Use this when you have optional dependencies. - If
      * dependency is not provided, your app can provide reasonable default logic.
      */
-    public DemoController(@Qualifier("tennisCoach") Coach theCoach) {
+    public DemoController(@Qualifier("cricketCoach") Coach theCoach) {
+	System.out.println("In constructor: " + getClass().getSimpleName());
 	myCoach = theCoach;
     }
 
     @GetMapping("/dailyworkout")
     public String getDailyWorkout() {
-	return myCoach.getDailyWorkout();
-    }
-
-    @GetMapping("/dailyworkout2")
-    public String getDailyWorkout2() {
 	return myCoach.getDailyWorkout();
     }
 
