@@ -8,17 +8,7 @@ import com.sqs.springcoredemo.common.Coach;
 
 /*
  * Field Injection Not recommended.
- *  
  * Not recommended by spring.io team. Makes the code harder to unit test.
- * 
- * @Autowired private Coach myCoach
- * 
- * Constructor Injection
- * 
- * @Autowired public DemoController(Coach theCoach) { this.myCoach = theCoach; }
- * 
- * @Autowired This anottation is optional, no need. Only need when you have more
- * than one contructor.
  * 
  * Which Injection Type sould I use?
  * 
@@ -27,16 +17,17 @@ import com.sqs.springcoredemo.common.Coach;
  * 
  * Setter Injection - Use this when you have optional dependencies. - If
  * dependency is not provided, your app can provide reasonable default logic.
- * 
- * 
  */
 @RestController
 public class DemoController {
 
     private Coach myCoach;
 
-    // @Autowired desnecessário. É automatico no construtor.
-    public DemoController(@Qualifier("cricketCoach") Coach theCoach) {
+    /*
+     * @Autowired desnecessário. É automatico no construtor. Only need when you have
+     * more than one contructor.
+     */
+    public DemoController(@Qualifier("swimCoach") Coach theCoach) {
 	System.out.println("In constructor: " + getClass().getSimpleName());
 	myCoach = theCoach;
     }
